@@ -37,7 +37,7 @@ This project demonstrates how to create a dynamic grid-based application using R
 
 1. Clone the repository.
 2. Run `npm install` to install dependencies.
-3. Place the `Datagrid_Josn.txt` file in the `public/data` folder.
+3. Place the `Datagrid_Josn.txt` file in the `public/data` folder.(By default, there is a test file)
 4. Run the project using `npm start`.
 
 ## Extending the Project
