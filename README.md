@@ -1,46 +1,46 @@
-# Getting Started with Create React App
+# GridComponent Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project demonstrates how to create a dynamic grid-based application using React, TypeScript, and ag-Grid, following SOLID principles and OOP. The project dynamically generates grid columns based on a JSON file and then create fake rows based on the columns and uses all the available properties from the JSON columns.
 
-## Available Scripts
+## Project Structure
 
-In the project directory, you can run:
+- **src/services/DataService.ts**:
+  - Responsible for fetching data from a `.txt` file and parsing it to JSON format.
+  - Provides a method `fetchData()` to retrieve the data.
 
-### `npm start`
+- **src/services/ColumnBuilder.ts**:
+  - This class builds the column definitions for ag-Grid by reading properties from the JSON data.
+  - The following properties are dynamically mapped from the JSON:
+    - `id`: Unique ID for each column.
+    - `field`: The field name from the data.
+    - `headerName`: The title to be displayed in the header.
+    - `sortable`: Whether the column is sortable.
+    - `width`: The width of the column.
+    - `align`: Text alignment in the column (default: `left`).
+    - `isVisible`: Whether the column is visible.
+    - `trueText`: The text to show when a boolean field is `true`.
+    - `falseText`: The text to show when a boolean field is `false`.
+    - `formatter`: A custom formatter for the column values.
+    - `cellClass`: A CSS class to apply to the column cells.
+    - `editor`: An editor object for columns that need custom input.
+    - `deltaWidth`: Adjustment width for columns.
+    - `boxWidth`: Box width for cells.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **src/components/GridComponent.tsx**:
+  - The main component that renders the ag-Grid.
+  - It uses `DataService` to fetch the JSON data and `ColumnBuilder` to generate column definitions based on the data.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **src/types/GridTypes.ts**:
+  - Contains the `ColumnDef` interface, which defines the structure of the ag-Grid column definitions.
 
-### `npm test`
+## Running the Project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository.
+2. Run `npm install` to install dependencies.
+3. Place the `Datagrid_Josn.txt` file in the `public/data` folder.
+4. Run the project using `npm start`.
 
-### `npm run build`
+## Extending the Project
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- To extend the project, you can modify `DataService` to fetch data from an API.
+- You can also add more properties to `ColumnBuilder` to support additional ag-Grid features.
